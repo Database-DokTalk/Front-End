@@ -1,0 +1,189 @@
+@font-face {
+    font-family: 'Pretendard'; /* 글꼴 이름 */
+    src: url('fonts/PretendardVariable.ttf') format('truetype'); /* 글꼴 경로와 형식 */
+    font-weight: normal; /* 기본 굵기 */
+    font-style: normal; /* 기본 스타일 */
+}
+
+/* 공통 스타일 */
+/* 전체 페이지 공통으로 적용되는 스타일 */
+body {
+    margin: 0;
+    font-family: 'Pretendard', Arial, sans-serif;/* 기본 폰트 설정 */
+    background-color: #FFFFFF;
+    color: #000000;
+  }
+  
+  /* 상단 바 스타일 */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #BABABA;/* 하단 테두리 */
+    padding-bottom: 30px;
+  }
+  
+  /* 로고 스타일 */
+  header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 로고와 텍스트 간의 간격 */
+  }
+  
+  /* 로고 이미지 스타일 */
+  header .logo .logo-img {
+    width: 104px; /* 로고 이미지 가로 크기 */
+    height: 85px; /* 로고 이미지 세로 크기 */
+    object-fit: cover; /* 이미지 비율 유지 */
+  }
+  
+  /* 로고 텍스트 스타일 */
+  header .logo h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+  
+  /* "독톡" 텍스트 스타일 */
+  header .logo h1 .ko {
+    font-size: 40px; /* "독톡" 크기 */
+    font-weight: bold; /* "독톡" 강조 */
+    color: #000000;
+  }
+  
+  @font-face {
+    font-family: 'LeeSeoyun'; /* 글꼴 이름 */
+    src: url('fonts/LeeSeoyun.ttf') format('truetype'); /* 글꼴 경로와 형식 */
+    font-weight: normal; /* 기본 글꼴 두께 */
+    font-style: normal; /* 기본 글꼴 스타일 */
+  }
+  
+  /* "DokTalk" 텍스트 스타일 */
+  header .logo h1 .en {
+    font-size: 24px; /* "DokTalk" 크기 */
+    font-weight: normal; /* "DokTalk" 일반 글꼴 */
+    color: #000000;
+    position: relative; /* 상대 위치 조정 */
+    top: 4px; /* 아래로 약간 내리기 */
+    font-family: 'LeeSeoyun', Arial, sans-serif; /* LeeSeoyun 글꼴 적용 */
+  }
+  
+  /* 네비게이션 메뉴 스타일 */
+  header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px; /* 메뉴 간 간격 */
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 네비게이션 메뉴 링크 스타일 */
+  header nav ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+  }
+
+/* 로그인 & 회원가입 버튼 스타일 */
+.auth-buttons {
+    display: flex;
+    align-items: center; /* 수직 가운데 정렬 */
+    gap: 10px; /* 버튼 간격 */
+    position: absolute;
+    right: 20px; /* 화면 오른쪽에서의 간격 */
+    top: 20px; /* 화면 위쪽에서의 간격 */
+}
+
+/* 로그인 버튼 스타일 */
+.auth-buttons .login-btn,
+.auth-buttons .signup-btn {
+    font-size: 24px; /* 글씨 크기 */
+    font-weight: 400; /* 굵기 */
+    color: #000000; /* 텍스트 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    cursor: pointer; /* 클릭 가능하도록 설정 */
+}
+
+/* 구분선 스타일 */
+.auth-buttons .separator {
+    font-size: 16px; /* 구분선 크기 */
+    color: #C1C1C1; /* 구분선 색상 */
+}
+
+/* 로그인 & 회원가입 버튼 호버 효과 */
+.auth-buttons .login-btn:hover,
+.auth-buttons .signup-btn:hover {
+    color: #2f1d19; /* 호버 시 색상 변경 */
+}
+
+
+
+
+
+
+/* 드롭다운 스타일 */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* 사용자 이름 아래에 표시 */
+    right: 0; /* 오른쪽 정렬 */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 100; /* 상위 레이어 */
+  }
+  
+  /* 드롭다운 항목 스타일 */
+  .dropdown-menu a {
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: block;
+    font-size: 16px;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f5f5f5;
+  }
+
+
+
+
+
+
+
+  /* 메인 베너 스타일*/
+  .banner {
+    position: relative; /* 절대 위치 설정 */
+    width: 100%; /* 너비 */
+    height: 436px; /* 높이 */
+    background-image: url('images/banner.png'); /* 배경 이미지 경로 */
+    background-size: cover; /* 배경 크기 조정 */
+    background-position: center; /* 이미지 중앙 정렬 */
+    background-repeat: no-repeat; /* 이미지 반복 제거 */
+    opacity: 0.85; /* 투명도 설정 (85%) */
+  }
+
+/* 홈 화면 문구 스타일 */
+.banner-text {
+    margin-top: 20px; /* 배너와 문구 사이 간격 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+.banner-text h2 {
+    font-size: 64px; /* 글씨 크기 */
+    color: #000000; /* 글씨 색상 */
+    font-weight: bold; /* 글씨 굵기 */
+}
+
+
+
+

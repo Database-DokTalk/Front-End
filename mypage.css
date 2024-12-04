@@ -1,0 +1,204 @@
+
+   @font-face {
+    font-family: 'Pretendard'; /* 글꼴 이름 */
+    src: url('fonts/PretendardVariable.ttf') format('truetype'); /* 글꼴 경로와 형식 */
+    font-weight: normal; /* 기본 굵기 */
+    font-style: normal; /* 기본 스타일 */
+}
+
+/* 공통 스타일 */
+/* 전체 페이지 공통으로 적용되는 스타일 */
+body {
+    margin: 0;
+    font-family: 'Pretendard', Arial, sans-serif;/* 기본 폰트 설정 */
+    background-color: #FFFFFF;
+    color: #000000;
+  }
+  
+  /* 상단 바 스타일 */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #BABABA;/* 하단 테두리 */
+    padding-bottom: 30px;
+  }
+  
+  /* 로고 스타일 */
+  header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 로고와 텍스트 간의 간격 */
+  }
+  
+  /* 로고 이미지 스타일 */
+  header .logo .logo-img {
+    width: 104px; /* 로고 이미지 가로 크기 */
+    height: 85px; /* 로고 이미지 세로 크기 */
+    object-fit: cover; /* 이미지 비율 유지 */
+  }
+  
+  /* 로고 텍스트 스타일 */
+  header .logo h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+  
+  /* "독톡" 텍스트 스타일 */
+  header .logo h1 .ko {
+    font-size: 40px; /* "독톡" 크기 */
+    font-weight: bold; /* "독톡" 강조 */
+    color: #000000;
+  }
+  
+  @font-face {
+    font-family: 'LeeSeoyun'; /* 글꼴 이름 */
+    src: url('fonts/LeeSeoyun.ttf') format('truetype'); /* 글꼴 경로와 형식 */
+    font-weight: normal; /* 기본 글꼴 두께 */
+    font-style: normal; /* 기본 글꼴 스타일 */
+  }
+  
+  /* "DokTalk" 텍스트 스타일 */
+  header .logo h1 .en {
+    font-size: 24px; /* "DokTalk" 크기 */
+    font-weight: normal; /* "DokTalk" 일반 글꼴 */
+    color: #000000;
+    position: relative; /* 상대 위치 조정 */
+    top: 4px; /* 아래로 약간 내리기 */
+    font-family: 'LeeSeoyun', Arial, sans-serif; /* LeeSeoyun 글꼴 적용 */
+  }
+  
+  /* 네비게이션 메뉴 스타일 */
+  header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px; /* 메뉴 간 간격 */
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  /* 네비게이션 메뉴 링크 스타일 */
+  header nav ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+  }
+
+/* 프로필 섹션 */
+.profile {
+  display: flex; /* 좌우로 배치하기 위해 Flexbox 사용 */
+  padding: 20px 50px; /* 상하 20px, 좌우 50px 간격 */
+  background-color: #FFFFFF; /* 배경색 흰색 */
+  gap: 100px; /* 왼쪽과 오른쪽 간격 조정 (수정된 간격) */
+  align-items: center;
+}
+
+.profile-left {
+  text-align: center; /* 프로필 이미지를 가운데 정렬 */
+  margin-left: 50px; /* 왼쪽 간격 추가 (수정된 부분) */
+}
+
+.profile-left h2 {
+  font-size: 32px; /* '회원정보' 글씨 크기 */
+  font-weight: normal; /* 글씨 굵기 normal */
+  margin-bottom: 25px; /* 아래 간격 추가 */
+  color: #333; /* 어두운 회색 텍스트 색상 */
+}
+
+.profile-left .profile-img {
+  width: 250px; /* 프로필 이미지 너비 */
+  height: 250px; /* 프로필 이미지 높이 */
+  border-radius: 50%; /* 이미지 둥글게 */
+  margin-bottom: 50px; /* 텍스트와 간격 */
+}
+
+.profile-left .profile-name {
+  margin: 5px 0; /* 위아래 간격 */
+  font-size: 32px; /* 이름 글씨 크기 */
+  font-weight: normal; /* 글씨 굵게 */
+  color: #000; /* 어두운 회색 텍스트 색상 */
+}
+
+.profile-left .profile-id {
+  font-size: 32px; /* 아이디 글씨 크기 */
+  color: #838383; /* 밝은 회색 텍스트 색상 */
+}
+
+
+.profile-divider {
+  width: 1px; /* 세로 줄의 두께 */
+  background-color: #BABABA; /* 세로 줄 색상 */
+  height: 300px; /* 세로 줄의 높이 */
+  margin: auto 20px; /* 위아래 정렬 및 좌우 간격 */
+}
+
+
+.profile-right {
+  flex: 1; /* 남은 공간을 채워 우측 확장 */
+  display: flex; /* 내부 요소를 Flexbox로 배치 */
+  flex-direction: column; /* 세로로 배치 */
+  justify-content: center; /* 수직 정렬 */
+}
+
+.profile-info {
+  background-color: #ffffff; /* 박스 배경 흰색 */
+  border: 1px solid #BABABA; /* 얇은 테두리 추가 */
+  overflow: hidden; /* 내부 내용이 넘치지 않도록 처리 */
+}
+
+.profile-info h2 {
+  margin: 0; /* 기본 여백 제거 */
+  font-size: 32px; /* 제목 글씨 크기 */
+  font-weight: normal; /* 글씨 두께 normal로 수정 */
+  background-color: #F2E9E2; /* 상단 배경색 설정 */
+  padding: 10px 15px; /* 내부 여백 추가 */
+  border-bottom: 1px solid #C1C1C1; /* 아래 구분선 추가 */
+}
+
+.profile-info table {
+  width: 100%; /* 테이블이 박스 안에서 꽉 차도록 설정 */
+  border-collapse: collapse; /* 테두리 간격 제거 */
+  background-color: #ffffff;
+}
+
+.profile-info th, .profile-info td {
+  padding: 10px 15px; /* 셀 내부 여백 추가 */
+  vertical-align: middle; /* 텍스트를 세로 중앙 정렬 */
+  border-bottom: 1px solid #C1C1C1; /* 각 행 아래에 실선 추가 */
+}
+
+
+
+.profile-info th {
+  text-align: left; /* 텍스트를 왼쪽 정렬 */
+  width: 50px; /* 아이콘 및 텍스트 열 너비 설정 */
+}
+
+.profile-info td {
+  font-size: 24px; /* 글씨 크기를 24px로 수정 */
+  color: #000000; /* 데이터 텍스트 색상 */
+}
+
+.icon {
+  width: 20px; /* 아이콘 크기 */
+  height: 20px; /* 아이콘 높이 */
+  margin-right: 0px; /* 텍스트와 간격 */
+  vertical-align: middle; /* 아이콘을 텍스트 중앙 정렬 */
+}
+
+.label {
+  font-weight: normal; /* '이름:', '아이디:' 등 텍스트 강조 */
+  margin-right: 10px; /* 텍스트와 실제 데이터 사이 간격 추가 */
+}
+
+main {
+  margin-top: 10px; /* 메뉴 줄과 프로필 박스 사이 간격 조정 */
+}

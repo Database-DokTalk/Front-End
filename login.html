@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>독톡 로그인</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <!-- 상단 바 -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="독톡 로고" class="logo-img">
+      <h1>
+        <span class="ko">독톡</span>
+        <span class="en">DokTalk</span>
+      </h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="record.html">기록장</a></li>
+        <li><a href="board.html">게시판</a></li>
+        <li><a href="discussion.html">토론방</a></li>
+        <li><a href="book_worldcup.html">독서월드컵</a></li>
+        <li><a href="mypage.html">마이페이지</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 로그인 폼 -->
+  <main>
+    <div class="login-container">
+      <h2>로그인</h2>
+      <form id="loginForm">
+        <input type="text" id="username" placeholder="아이디" required>
+        <input type="password" id="password" placeholder="비밀번호" required>
+        <button id="login-btn">로그인</button>
+      </form>
+      <div class="signup-section">
+        <p>아직 회원이 아니신가요?</p>
+        <button class="signup-btn">회원가입 하기</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+@font-face {
+    font-family: 'Pretendard'; /* 글꼴 이름 */
+    src: url('fonts/PretendardVariable.ttf') format('truetype'); /* 글꼴 경로와 형식 */
+    font-weight: normal; /* 기본 굵기 */
+    font-style: normal; /* 기본 스타일 */
+}
+
+/* 공통 스타일 */
+/* 전체 페이지 공통으로 적용되는 스타일 */
+body {
+    margin: 0;
+    font-family: 'Pretendard', Arial, sans-serif;/* 기본 폰트 설정 */
+    background-color: #FFFFFF;
+    color: #000000;
+  }
+  
+  /* 상단 바 스타일 */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #BABABA;/* 하단 테두리 */
+    padding-bottom: 30px;
+  }
+  
+  /* 로고 스타일 */
+  header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 로고와 텍스트 간의 간격 */
+  }
+  
+  /* 로고 이미지 스타일 */
+  header .logo .logo-img {
+    width: 104px; /* 로고 이미지 가로 크기 */
+    height: 85px; /* 로고 이미지 세로 크기 */
+    object-fit: cover; /* 이미지 비율 유지 */
+  }
+  
+  /* 로고 텍스트 스타일 */
+  header .logo h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+  
+  /* "독톡" 텍스트 스타일 */
+  header .logo h1 .ko {
+    font-size: 40px; /* "독톡" 크기 */
+    font-weight: bold; /* "독톡" 강조 */
+    color: #000000;
+  }
+  
+  @font-face {
+    font-family: 'LeeSeoyun'; /* 글꼴 이름 */
+    src: url('fonts/LeeSeoyun.ttf') format('truetype'); /* 글꼴 경로와 형식 */
+    font-weight: normal; /* 기본 글꼴 두께 */
+    font-style: normal; /* 기본 글꼴 스타일 */
+  }
+  
+  /* "DokTalk" 텍스트 스타일 */
+  header .logo h1 .en {
+    font-size: 24px; /* "DokTalk" 크기 */
+    font-weight: normal; /* "DokTalk" 일반 글꼴 */
+    color: #000000;
+    position: relative; /* 상대 위치 조정 */
+    top: 4px; /* 아래로 약간 내리기 */
+    font-family: 'LeeSeoyun', Arial, sans-serif; /* LeeSeoyun 글꼴 적용 */
+  }
+  
+  /* 네비게이션 메뉴 스타일 */
+  header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 50px; /* 메뉴 간 간격 */
+    font-size: 32px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 네비게이션 메뉴 링크 스타일 */
+  header nav ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+  }
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px); /* 상단바 높이 제외 */
+    padding: 20px;
+}
+
+
+/* 회원가입 폼 컨테이너 스타일 */
+.signup-container {
+    width: 594px;
+    background: none; /* 배경색 제거 */
+    border: none; /* 테두리 제거 */
+    box-shadow: none; /* 박스 그림자 제거 */
+    padding: 20; /* 안쪽 여백 제거 */
+    text-align: center; 
+  }
+
+  /* 입력 필드에 대한 라벨 스타일 */
+.signup-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #000000;
+    text-align: left;
+}
+/* 입력 필드 스타일 */
+.signup-container input {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #BABABA;
+    font-size: 24px;
+}
+
+
+/* 비밀번호 입력창과 비밀번호 토글 버튼을 감싸는 컨테이너 */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* 비밀번호 입력창 스타일 */
+.password-wrapper input {
+    width: 100%;
+}
+
+/* 비밀번호 표시/숨기기 토글 버튼 */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 0%;
+    transform: translateY(50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #FFFFFF;
+}
+
+/* 회원가입 버튼 스타일 */
+.signup-btn {
+    margin-top: 20px; /* 버튼 상단 간격 */
+    width: 615px;
+    height: 75px;
+    padding: 10px;
+    background-color: #F2E9E2;
+    color: #000000;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+/* 회원가입 버튼 호버 효과 */
+.signup-btn:hover {
+    background-color: #E0D4C8;
+}
+
+/* 로그인 페이지로 돌아가기 텍스트 스타일 */
+.return-to-login {
+    text-align: center; /* 중앙 정렬 */
+    margin-top: 20px;
+    font-size: 24px;
+    color: #C1C1C1; /* 회색 글씨 */
+    text-decoration: underline; /* 밑줄 추가 */
+    cursor: pointer; /* 클릭 가능 */
+    text-align: center;
+}
+  
+  /* 로그인 페이지로 돌아가기 텍스트 호버 효과 */
+  .return-to-login:hover {
+    color: #998b87; /* 호버 시 색상 변경 */
+  }
