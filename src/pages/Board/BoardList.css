@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    font-family: "regular"; /* font-face에서 등록한 Pretendard 사용 */
+    font-weight: 400; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+    font-size: 18px; /* 텍스트 크기 설정 */
+}
+  
+.boardmain {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 0px 20px;
+}
+  
+.board-list-page h2 {
+    margin-top: 32px;
+    margin-left: 60px;
+    font-family: "semibold"; /* font-face에서 등록한 Pretendard 사용 */
+    font-weight: 600; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+    font-size: 32px; /* 텍스트 크기 설정 */
+}
+
+.board-list-header {
+    display: flex; /* Flexbox로 변경 */
+    justify-content: space-between;
+    align-items: center; /* 수직 가운데 정렬 */
+    margin-bottom: 20px; /* 하단 간격 설정 */
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 13px;
+}
+
+.board-table {
+    width: calc(100% - 138px);
+    border-collapse: collapse;
+    margin: 48px 69px;
+    max-width: 1767px;
+}
+  
+.board-table th,
+.board-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+  
+.board-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+  
+.board-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+  
+.board-title a {
+    text-decoration: none;
+    color: #007BFF;
+}
+  
+.board-title a:hover {
+    text-decoration: underline;
+}
+
+.board-table th.boardnum,
+.board-table td.boardnum {
+    text-align: center;
+}

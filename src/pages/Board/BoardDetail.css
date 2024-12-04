@@ -1,0 +1,106 @@
+.bookcover {
+    display: flex; /* Flexbox 컨테이너 활성화 */
+    justify-content: center; /* 좌우 가운데 정렬 */
+    width: 200px;
+    height: auto;
+    margin-top: 96px;
+}
+
+.boardcover {
+    width: 100%; /* 부모 크기에 맞춤 */
+    height: 100%; /* 부모 크기에 맞춤 */
+    object-fit: cover; /* 이미지 비율 유지하면서 크기 조정 */
+}
+
+
+.left {
+    width: 22%;
+    float: left;
+    box-sizing: border-box;
+
+    border-right: 1px solid #BABABA;
+}
+
+.right {
+    width: 75%;
+    float: right;
+    box-sizing: border-box;
+    margin: 20px;
+    padding: 20px;
+    background-color: #F3ECE0;
+    border-radius: 8px;
+}
+
+.bookinfo {
+    text-align: center;
+}
+
+.bookname {
+    margin-top: 33px;
+    font-family: "semibold"; /* font-face에서 등록한 Pretendard 사용 */
+    font-weight: 600; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+    font-size: 28px; /* 텍스트 크기 설정 */
+}
+
+.author {
+    margin-top: 24px;
+    font-family: "regular"; /* font-face에서 등록한 Pretendard 사용 */
+    font-weight: 400; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+    font-size: 18px; /* 텍스트 크기 설정 */
+}
+
+.publisher {
+    margin-top: 96px;
+    font-family: "regular"; /* font-face에서 등록한 Pretendard 사용 */
+    font-weight: 400; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+    font-size: 18px; /* 텍스트 크기 설정 */
+}
+
+.title {
+    font-family: "regular"; /* font-face에서 등록한 Pretendard 사용 */
+    font-weight: 400; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+    font-size: 30px; /* 텍스트 크기 설정 */
+}
+
+.writeinfo {
+    display: flex;
+    justify-content: space-between; /* 작성자와 작성 날짜를 양쪽 끝에 배치 */
+    align-items: center;           /* 수직 가운데 정렬 */
+    margin: 16px 10px;                /* 간격 조정 */
+}
+  
+.writer, .date {
+    margin: 0;
+    font-size: 16px;
+}
+
+.textarea-field {
+    width: 100%;
+    height: 428px;
+    background-color: #F3ECE0;
+    font-size: 20px;
+    font-family: "regular"; /* font-face에서 등록한 Pretendard 사용 */
+    font-weight: 400; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+    border: transparent;
+    resize: none;
+    padding: 0px 27px;
+}
+
+.like-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.like-button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.like-button.liked {
+    color: red;
+    border-color: red;
+}
+  

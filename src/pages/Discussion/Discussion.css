@@ -1,0 +1,89 @@
+.container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #F3ECE0;
+  }
+  
+  .input-field {
+    display: block;
+    width: 95%;
+    margin: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #CFB7A3;
+    border-radius: 5px;
+  }
+
+  .textarea-field {
+    display: block;
+    width: 95%;
+    height: 450px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #CFB7A3;
+    border-radius: 5px;
+  }
+  
+  .action-button1 {
+    padding: 10px 20px;
+    background-color: #CFB7A3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 90%;
+  }
+  
+  .action-button:hover {
+    background-color: #CFB7A3;
+  }
+  
+  .suggestions-list {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: white;
+    border: 1px solid #ddd;
+    max-height: 150px;
+    overflow-y: auto;
+    width: calc(100% - 20px);
+    z-index: 1000;
+  }
+  
+  .suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .suggestion-item:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .vote-section {
+    display: flex;
+    justify-content: center; /* 버튼 수평 중앙 정렬 */
+    align-items: center; /* 버튼 수직 중앙 정렬 */
+    margin: 10px;
+  }
+
+  .vote-button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #CFB7A3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .action-button2 {
+    padding: 15px;
+    background-color: #CFB7A3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 90%;
+  }
