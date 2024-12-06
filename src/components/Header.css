@@ -1,36 +1,71 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: transparent;
-    border-bottom: 1px solid #BABABA;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: transparent;
+  border-bottom: 1px solid #BABABA;
+}
   
-  .logo {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .logo-image {
-    width: 104px;
-    height: 85px;
-  }
-  
-  .nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .nav a:hover {
-    color: #7D493C;
-    font-weight: bold;
-  }
-  
-  .user-info {
-    font-size: 14px;
-    color: #666;
-  }
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.logo-image {
+  width: 104px;
+  height: 85px;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column; /* 내부 요소를 수직 정렬 */
+  align-items: flex-end; /* 오른쪽 정렬 */
+}
+
+.auth-button {
+  display: flex;
+  flex-direction: row;
+}
+
+.login-button {
+  padding: 5px;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: "regular"; /* font-face에서 등록한 Pretendard 사용 */
+  font-weight: 400; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+}
+
+.signup-button {
+  padding: 5px;
+  margin-bottom: 15px;
+  margin-left: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: "regular"; /* font-face에서 등록한 Pretendard 사용 */
+  font-weight: 400; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+}
+
+.nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.nav a:hover {
+  color: #7D493C;
+  font-weight: bold;
+}
+
+.user-info {
+  font-size: 14px;
+  color: #666;
+}

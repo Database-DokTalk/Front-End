@@ -1,0 +1,35 @@
+/* 공통 스타일 */
+body {
+    margin: 0;
+    font-family: "regular"; /* font-face에서 등록한 Pretendard 사용 */
+    font-weight: 400; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+    font-size: 18px; /* 텍스트 크기 설정 */
+}
+  
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+  
+/* 배너 스타일 */
+.banner {
+    width: 100%;
+    height: 300px;
+    background-image: url("https://via.placeholder.com/1500x300"); /* 배너 이미지 URL */
+    background-size: cover;
+    background-position: center;
+}
+  
+.banner-text {
+    text-align: center;
+    margin-top: -150px; /* 배너와 텍스트 간 거리 조정 */
+    color: #333;
+}
+  
+.banner-text h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+}

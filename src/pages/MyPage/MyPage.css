@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    font-family: "regular"; /* font-face에서 등록한 Pretendard 사용 */
+    font-weight: 400; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+    font-size: 18px; /* 텍스트 크기 설정 */
+}
+
+.mypage-title {
+    font-family: "regular";
+    font-weight: 400;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 69px;
+    margin-bottom: 68px;
+}
+
+.profile {
+    width: 250px; /* 이미지의 너비 */
+    height: 250px; /* 이미지의 높이 (너비와 동일하게 설정) */
+    border-radius: 50%; /* 원형으로 만들기 */
+    border: 1px solid #BABABA; /* 테두리 두께와 색상 */
+    object-fit: cover; /* 이미지가 컨테이너에 맞게 비율 조정 */
+    display: block; /* 정렬을 위해 블록 요소로 설정 */
+    margin: 0 auto; /* 이미지 중앙 정렬 */
+}
+
+.mypage-left {
+    width: 30%;
+    float: left;
+    box-sizing: border-box;
+    border-right: 1px solid #BABABA;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 가로 중앙 정렬 */
+    justify-content: center; /* 세로 중앙 정렬 */
+    height: 100%; /* 컨테이너 높이에 맞춤 */
+}
+
+.mypage-right {
+    width: 70%;
+    float: right;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.userinfo {
+    text-align: center;
+}
+
+.username {
+    margin-top: 38px;
+    font-family: "regular";
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.userid {
+    margin-top: 7px;
+    margin-bottom: 242px;
+    font-family: "regular";
+    font-weight: 400;
+    font-size: 22px;
+    color: #838383;
+}
+
+.mypage-table {
+    width: calc(100% - 138px);
+    border-collapse: collapse;
+    max-width: 1700px;
+    margin: 75px 73px;
+}
+
+.titlehead {
+    background-color: #F2E9E2;
+}
+
+.tabletitle {
+    padding: 10px 20px;
+    font-family: "semibold";
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.tablerow {
+    border-bottom: 1px solid #C1C1C1;
+}
+
+.table-icon {
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    padding: 17px 16px;
+}
+
+.mypage-table .label {
+    width: 106px; /* "이름:", "아이디:" 등의 라벨 열 너비 */
+    font-weight: bold;
+    text-align: left;
+    padding-left: 2px;
+}
+  
+.mypage-table .value {
+    width: auto; /* 나머지 공간을 차지하도록 설정 */
+    text-align: left;
+}

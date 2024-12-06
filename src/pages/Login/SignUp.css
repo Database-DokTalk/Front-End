@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    font-family: "regular"; /* font-face에서 등록한 Pretendard 사용 */
+    font-weight: 400; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+    font-size: 18px; /* 텍스트 크기 설정 */
+}
+
+/* 메인 영역 중앙 정렬 */
+.signupmain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* 화면 전체 높이 */
+    padding: 20px;
+}
+
+/* 회원가입 폼 컨테이너 스타일 */
+.signup-container {
+    width: 580px;
+    background: none;
+    padding: 20px;
+    text-align: center;
+}
+
+/* 입력 필드에 대한 라벨 스타일 */
+.signup-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #000000;
+    text-align: left;
+}
+
+/* 입력 필드 스타일 */
+.signup-container input {
+    width: 100%;
+    height: 30px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border: 1px solid #bababa;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* 비밀번호 입력창과 비밀번호 토글 버튼을 감싸는 컨테이너 */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* 비밀번호 표시/숨기기 토글 버튼 */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* 회원가입 버튼 스타일 */
+.signup-btn {
+    margin-top: 20px;
+    width: 100%;
+    height: 45px;
+    background-color: #f2e9e2;
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* 회원가입 버튼 호버 효과 */
+.signup-btn:hover {
+    background-color: #e0d4c8;
+}
+
+/* 로그인 페이지로 돌아가기 텍스트 스타일 */
+.return-to-login {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #c1c1c1;
+    text-decoration: underline;
+    cursor: pointer;
+}
+  
+/* 로그인 페이지로 돌아가기 텍스트 호버 효과 */
+.return-to-login:hover {
+    color: #998b87;
+}

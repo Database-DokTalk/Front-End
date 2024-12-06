@@ -1,6 +1,7 @@
 // 기록장 관련 컴포넌트 중 RecordWrite.jsx -> 기록장 작성 화면
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import records from "../../data/records"; // 더미 데이터 가져오기
 import "./RecordWrite.css";
 
 const RecordWrite = () => {
@@ -23,40 +24,6 @@ const RecordWrite = () => {
         content.trim() !== ""
       );
     };
-
-  // 책 제목 입력 핸들러
-  const handleBookTitleChange = async (e) => {
-    const inputTitle = e.target.value;
-    setBookTitle(inputTitle);
-
-    if (inputTitle) {
-      try {
-        // 책 정보를 데이터베이스에서 가져오기
-        const response = await axios.get(`/api/books?title=${inputTitle}`);
-        if (response.data) {
-          // 데이터베이스에 정보가 있는 경우
-          setAuthor(response.data.author || "");
-          setPublisher(response.data.publisher || "");
-          setIsEditable(false); // 추가 입력 비활성화
-        } else {
-          // 데이터베이스에 정보가 없는 경우
-          setAuthor("");
-          setPublisher("");
-          setIsEditable(true); // 추가 입력 활성화
-        }
-      } catch (error) {
-        console.error("책 정보를 가져오는 중 오류 발생:", error);
-        setAuthor("");
-        setPublisher("");
-        setIsEditable(true); // 오류 시 추가 입력 활성화
-      }
-    } else {
-      // 책 제목이 비어있을 때 초기화
-      setAuthor("");
-      setPublisher("");
-      setIsEditable(false);
-    }
-  };
 
   // 기록장 등록 핸들러
   const handleSubmit = (e) => {
@@ -98,10 +65,10 @@ const RecordWrite = () => {
         </div>
 
         <div className="right">
-          <textarea placeholder="제목을 입력하세요." class="title"></textarea>
+          <textarea placeholder="제목을 입력하세요." className="title"></textarea>
           <hr />
           <div className="writeinfo">
-            <textarea placeholder="책 제목을 입력하세요." class="write"></textarea>
+            <p className="writer">지현</p>
             <p className="date">작성 날짜: 0000.00.00</p>
           </div>
           <hr />
