@@ -126,9 +126,20 @@ main h2 {
 
 .thumbnail {
   width: 100%; /* 썸네일의 너비를 카드 크기에 맞춤 */
-  height: 150px; /* 썸네일 높이 */
-  background-color: #ccc; /* 썸네일 배경색 */
+  height: 250px; /* 썸네일 높이를 늘림 */
   margin: 10px 0; /* 썸네일과 텍스트 사이 간격 */
+  display: flex; /* 이미지의 중앙 정렬을 위해 flexbox 사용 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  background-color: #ffffff; /* 배경색 */
+  border-radius: 4px; /* 모서리를 둥글게 */
+  overflow: hidden; /* 박스 밖으로 넘치는 부분 숨김 */
+}
+
+.thumbnail img {
+  max-width: 100%; /* 이미지의 최대 너비를 썸네일에 맞춤 */
+  max-height: 100%; /* 이미지의 최대 높이를 썸네일에 맞춤 */
+  object-fit: cover; /* 비율을 유지하며 썸네일 박스에 맞게 조정 */
 }
 
 .select-button {
