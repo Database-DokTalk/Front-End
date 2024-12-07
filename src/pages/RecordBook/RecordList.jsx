@@ -1,11 +1,10 @@
 // 기록장 관련 컴포넌트 중 RecordList
 import React from "react";
-import { useNavigate } from "react-router-dom"; // React Router 훅 가져오기
+import { useNavigate, Link } from "react-router-dom"; // React Router 훅 가져오기
 import records from "../../data/records"; // 더미 데이터 가져오기
-import Header from "../../components/Header"; // 공통 Header 컴포넌트
 import "./RecordList.css";
 
-const RecordList = () => {
+const RecordList = ({ records }) => {
   const navigate = useNavigate(); // 페이지 이동을 위한 훅
 
   const goToWrite = () => {
@@ -33,7 +32,7 @@ const RecordList = () => {
               <tr key={record.id}>
                 <td className="num">{index + 1}</td>
                 <td className="record-title">
-                  <a href={`/record/${record.id}`}>{record.title}</a>
+                  <Link to={`/record/${record.id}`}>{record.title}</Link>
                 </td>
                 <td>{record.book}</td>
                 <td>{record.date}</td>
