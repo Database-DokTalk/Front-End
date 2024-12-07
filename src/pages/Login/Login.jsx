@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import React, { useState } from "react";
 import "./Login.css";
 
 const Login = () => {
@@ -50,15 +49,12 @@ const Login = () => {
 
   const navigateToSignup = () => {
     window.location.href = "/signup"; // 회원가입 경로로 이동
-    window.location.href = "/signup"; // 회원가입 경로로 이동
   };
 
   return (
     <div className="login-page">
       <main className="loginmain">
         <h2>로그인</h2>
-      <main className="loginmain">
-        <h2>로그인</h2>
 
         <input
           type="text"
@@ -79,33 +75,7 @@ const Login = () => {
         <button type="button" className="loginBtn" onClick={handleLogin}>
           로그인
         </button>
-        <input
-          type="text"
-          name="username"
-          placeholder="아이디"
-          value={credentials.username}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="비밀번호"
-          value={credentials.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="button" className="loginBtn" onClick={handleLogin}>
-          로그인
-        </button>
 
-        <div className="signup-section">
-          <p>아직 회원이 아니신가요?</p>
-          <button className="signupBtn" onClick={navigateToSignup}>
-            회원가입 하기
-          </button>
-        </div>
-      </main>
         <div className="signup-section">
           <p>아직 회원이 아니신가요?</p>
           <button className="signupBtn" onClick={navigateToSignup}>

@@ -57,15 +57,8 @@ const SignUp = () => {
             <main className="signupmain">
                 <div className="signup-container">
                     <form onSubmit={handleSubmit}>
-                    <form onSubmit={handleSubmit}>
                         <label htmlFor="username">아이디를 입력해주세요 (6자 이상)</label>
                         <input
-                            type="text"
-                            id="username"
-                            name="username"
-                            placeholder="아이디"
-                            required
-                            minLength="6"
                             type="text"
                             id="username"
                             name="username"
@@ -100,20 +93,10 @@ const SignUp = () => {
                             name="name"
                             placeholder="이름"
                             required
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder="이름"
-                            required
                         />
 
                         <label htmlFor="phone">전화번호를 입력해주세요</label>
                         <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            placeholder="전화번호"
-                            required
                             type="tel"
                             id="phone"
                             name="phone"
