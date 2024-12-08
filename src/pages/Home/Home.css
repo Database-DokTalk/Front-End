@@ -1,0 +1,20 @@
+.banner {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+  
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-text {
+    text-align: center;
+    margin: 70px 0;
+    color: #000000;
+    font-family: "medium"; /* font-face에서 등록한 Pretendard 사용 */
+    font-weight: 500; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+    font-size: 45px;
+}
