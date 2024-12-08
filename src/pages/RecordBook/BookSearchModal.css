@@ -94,6 +94,13 @@ table td.modal-center .selectBtn:hover {
     background-color: #BD9F97; /* hover 시 배경색 변경 */
 }
 
+.table-container {
+    max-height: 400px; /* 5개의 행만 보이도록 조정 */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
 /* 모달 등장 애니메이션 */
 @keyframes fadeIn {
     from {

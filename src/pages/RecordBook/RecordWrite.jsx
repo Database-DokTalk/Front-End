@@ -63,7 +63,7 @@ const RecordWrite = () => {
             <p className="bookname">{bookTitle || "책 제목: 선택 안됨"}</p>
             <p className="author">{author || "저자: 선택 안됨"}</p>
             <p className="publisher">{publisher || "출판사: 선택 안됨"}</p>
-            <button onClick={() => setIsModalOpen(true)}>책 검색하러 가기</button>
+            <button className="searchBtn" onClick={() => setIsModalOpen(true)}>책 검색하러 가기</button>
           </div>
         </div>
 
