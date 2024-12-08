@@ -12,7 +12,7 @@ import RecordWrite from "./pages/RecordBook/RecordWrite";
 import BoardList from "./pages/Board/BoardList";
 import BoardDetail from "./pages/Board/BoardDetail";
 import PostForm from "./pages/Discussion/PostForm";
-import DiscussionList from "./pages/Discussion/DiscussionList"
+import DiscussionList from "./pages/Discussion/DiscussionList";
 import Discussion from "./pages/Discussion/Discussion";
 import MyPage from "./pages/MyPage/MyPage";
 import WorldcupList from "./pages/Worldcup/WorldcupList";
@@ -40,7 +40,6 @@ function App() {
         <MainText />
 
         <Routes>
-          {/* <Route path="/" element={<Navigate to="/" />} /> */}
           <Route path="/login" element={<Login />} /> {/* 로그인 페이지 */}
           <Route path="/signup" element={<SignUp />} />
           <Route path="/record" element={<RecordList records={records} />} />
@@ -53,25 +52,7 @@ function App() {
             path="/postform"
             element={<PostForm onSubmit={handlePostSubmit} />}
           />
-          {/* <Route
-            path="/discussion/:id"
-            element={
-              postData ? (
-                <Discussion
-                  post={postData}
-                  onBack={() => {
-                    window.history.back();
-                  }}
-                />
-              ) : (
-                <div>게시글 데이터가 없습니다.</div>
-              )
-            }
-          /> */}
-          <Route
-            path="/discussion/:id"
-            element={<Discussion discussions={discussions} />}
-          />
+          <Route path="/discussion/:discussionId" element={<Discussion discussions={discussions} />} />
           <Route path="/worldcup" element={<WorldcupList />} />
           <Route path="/mypage" element={<MyPage />} />
         </Routes>

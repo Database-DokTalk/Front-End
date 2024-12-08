@@ -36,22 +36,27 @@ const BookSearchModal = ({ onClose, onSelectBook }) => {
               </tr>
             </thead>
             <tbody>
-              {filteredBooks.map((book) => (
-                <tr key={book.id}>
-                  <td className="modal-center">
-                    <button onClick={() => onSelectBook(book)} className="selectBtn">✔️</button>
+              {filteredBooks.length > 0 ? (
+                filteredBooks.map((book) => (
+                  <tr key={book.id}>
+                    <td className="modal-center">
+                      <button onClick={() => onSelectBook(book)} className="selectBtn">✔️</button>
+                    </td>
+                    <td>{book.title}</td>
+                    <td>{book.author}</td>
+                    <td>{book.publisher}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4" className="no-results">
+                    검색 결과가 없습니다.
                   </td>
-                  <td>{book.title}</td>
-                  <td>{book.author}</td>
-                  <td>{book.publisher}</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
-        
-        {/* 책이 없을 때 */}
-        {filteredBooks.length === 0 && <p>검색 결과가 없습니다.</p>}
         <button className="close-button" onClick={onClose}>닫기</button>
       </div>
     </div>
