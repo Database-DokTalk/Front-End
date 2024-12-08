@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header"; // 상단바 컴포넌트
+import Banner from "./components/Banner"; // 배너 컴포넌트
+import MainText from "./components/MainText"; // 메인텍스트 컴포넌트
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/Login/SignUp";
 import RecordList from "./pages/RecordBook/RecordList";
@@ -10,6 +12,7 @@ import RecordWrite from "./pages/RecordBook/RecordWrite";
 import BoardList from "./pages/Board/BoardList";
 import BoardDetail from "./pages/Board/BoardDetail";
 import PostForm from "./pages/Discussion/PostForm";
+import DiscussionList from "./pages/Discussion/DiscussionList"
 import Discussion from "./pages/Discussion/Discussion";
 import MyPage from "./pages/MyPage/MyPage";
 import WorldcupList from "./pages/Worldcup/WorldcupList";
@@ -18,16 +21,24 @@ import initialRecords from "./data/records";
 function App() {
   const [records, setRecords] = useState(initialRecords); // 독서 기록 리스트 상태
   const [postData, setPostData] = useState(null);
-  // const [discussions, setDiscussions] = useState(discussionsData);
+  const [discussions, setDiscussions] = useState([]);
 
-  const handlePostSubmit = (data) => {
-    setPostData(data);
+  const handlePostSubmit = (newPost) => {
+    setDiscussions((prevDiscussions) => [
+      ...prevDiscussions,
+      { id: Date.now(), ...newPost },
+    ]);
   };
 
   return (
     <div>
+      {/* 헤더 컴포넌트 */}
       <Header />
       <main>
+        {/* 배너와 메인 텍스트 */}
+        <Banner />
+        <MainText />
+
         <Routes>
           {/* <Route path="/" element={<Navigate to="/" />} /> */}
           <Route path="/login" element={<Login />} /> {/* 로그인 페이지 */}
@@ -37,12 +48,13 @@ function App() {
           <Route path="/record/write" element={<RecordWrite setRecords={setRecords} records={records} />} />
           <Route path="/board" element={<BoardList />} />
           <Route path="/board/:id" element={<BoardDetail />} />
+          <Route path="/discussion" element={<DiscussionList discussions={discussions} />} />
           <Route
             path="/postform"
             element={<PostForm onSubmit={handlePostSubmit} />}
           />
-          <Route
-            path="/discussion"
+          {/* <Route
+            path="/discussion/:id"
             element={
               postData ? (
                 <Discussion
@@ -55,6 +67,10 @@ function App() {
                 <div>게시글 데이터가 없습니다.</div>
               )
             }
+          /> */}
+          <Route
+            path="/discussion/:id"
+            element={<Discussion discussions={discussions} />}
           />
           <Route path="/worldcup" element={<WorldcupList />} />
           <Route path="/mypage" element={<MyPage />} />

@@ -104,3 +104,13 @@
     cursor: pointer;
     margin-left: 93%;
 }
+
+.searchBtn {
+    padding: 10px 20px;
+    background-color: #7D493C;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 50px;
+}

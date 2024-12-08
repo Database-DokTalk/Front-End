@@ -1,7 +1,20 @@
 import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import "./Discussion.css";
 
-const Discussion = ({ post, onBack }) => {
+const Discussion = ({ discussions }) => {
+  const { id } = useParams(); // URL 파라미터에서 id 가져오기
+  const navigate = useNavigate();
+
+  // 기존 게시글 데이터에서 현재 id에 해당하는 게시글 찾기
+  const post = discussions.find((discussion) => discussion.id === parseInt(id));
+
+  // 게시글이 없는 경우 처리
+  if (!post) {
+    return <div>게시글을 찾을 수 없습니다.</div>;
+  }
+
+  // 기존 상태 및 함수 정의
   const [agreeCount, setAgreeCount] = useState(0); // 찬성 카운트
   const [disagreeCount, setDisagreeCount] = useState(0); // 반대 카운트
   const [hasVoted, setHasVoted] = useState(false); // 투표 여부
@@ -42,12 +55,27 @@ const Discussion = ({ post, onBack }) => {
   return (
     <div className="container">
       <div className="background">
+        {/* 기존 게시글 제목 */}
         <h1 className="title">{post.postTitle}</h1>
-        <hr/>
+        <hr />
+        {/* 게시글 정보 */}
         <div className="book-info">
-          <div className="info-row" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div
+            className="info-row"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
             <span style={{ flex: "1" }}>책 제목: {post.bookTitle}</span>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-end",
+              }}
+            >
               <span>지은이: {post.author}</span>
               <span>출판사: {post.publisher}</span>
             </div>
@@ -115,6 +143,14 @@ const Discussion = ({ post, onBack }) => {
             ))}
           </ul>
         </div>
+
+        {/* 뒤로가기 버튼 추가 */}
+        <button
+          onClick={() => navigate("/discussion")}
+          className="back-button"
+        >
+          뒤로가기
+        </button>
       </div>
     </div>
   );
