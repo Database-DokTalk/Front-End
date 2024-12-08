@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header"; // 상단바 컴포넌트
+import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/Login/SignUp";
 import RecordList from "./pages/RecordBook/RecordList";
@@ -10,7 +11,7 @@ import RecordWrite from "./pages/RecordBook/RecordWrite";
 import BoardList from "./pages/Board/BoardList";
 import BoardDetail from "./pages/Board/BoardDetail";
 import PostForm from "./pages/Discussion/PostForm";
-import DiscussionList from "./pages/Discussion/DiscussionList"
+import DiscussionList from "./pages/Discussion/DiscussionList";
 import Discussion from "./pages/Discussion/Discussion";
 import MyPage from "./pages/MyPage/MyPage";
 import WorldcupList from "./pages/Worldcup/WorldcupList";
@@ -30,11 +31,12 @@ function App() {
 
   return (
     <div>
+      {/* 헤더 컴포넌트 */}
       <Header />
       <main>
         <Routes>
-          { <Route path="/" element={<Navigate to="/" />} /> }
-          <Route path="/login" element={<Login />} /> {/* 로그인 페이지 */}
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} /> {/* 로그인 페이지 */}
           <Route path="/signup" element={<SignUp />} />
           <Route path="/record" element={<RecordList records={records} />} />
           <Route path="/record/:id" element={<RecordDetail records={records} />} />
@@ -46,25 +48,7 @@ function App() {
             path="/postform"
             element={<PostForm onSubmit={handlePostSubmit} />}
           />
-          {/* <Route
-            path="/discussion/:id"
-            element={
-              postData ? (
-                <Discussion
-                  post={postData}
-                  onBack={() => {
-                    window.history.back();
-                  }}
-                />
-              ) : (
-                <div>게시글 데이터가 없습니다.</div>
-              )
-            }
-          /> */}
-          <Route
-            path="/discussion/:id"
-            element={<Discussion discussions={discussions} />}
-          />
+          <Route path="/discussion/:discussionId" element={<Discussion discussions={discussions} />} />
           <Route path="/worldcup" element={<WorldcupList />} />
           <Route path="/mypage" element={<MyPage />} />
         </Routes>

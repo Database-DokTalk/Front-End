@@ -1,26 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./Discussion.css";
 
-const Discussion = ({ discussions }) => {
-  const { id } = useParams(); // URL 파라미터에서 id 가져오기
+const Discussion = () => {
+  const { discussionId } = useParams(); // URL 파라미터에서 discussionId 가져오기
   const navigate = useNavigate();
 
-  // 기존 게시글 데이터에서 현재 id에 해당하는 게시글 찾기
-  const post = discussions.find((discussion) => discussion.id === parseInt(id));
-
-  // 게시글이 없는 경우 처리
-  if (!post) {
-    return <div>게시글을 찾을 수 없습니다.</div>;
-  }
-
-  // 기존 상태 및 함수 정의
+  const [post, setPost] = useState(null); // 게시글 상태
   const [agreeCount, setAgreeCount] = useState(0); // 찬성 카운트
   const [disagreeCount, setDisagreeCount] = useState(0); // 반대 카운트
   const [hasVoted, setHasVoted] = useState(false); // 투표 여부
   const [comments, setComments] = useState([]); // 댓글 리스트
   const [newComment, setNewComment] = useState(""); // 새 댓글 내용
   const [isCommenting, setIsCommenting] = useState(false); // 댓글 입력란 표시 여부
+
+  // 게시글 상세 정보 가져오기
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const response = await fetch(`http://13.124.74.53:8080/api/discussions/${discussionId}`);
+        
+        if (!response.ok) {
+          throw new Error("게시글을 불러오는 데 실패했습니다.");
+        }
+
+        const data = await response.json();
+        
+        // 'result' 객체 내 데이터를 setPost로 업데이트
+        if (data.isSuccess) {
+          setPost(data.result); // 게시글 데이터는 result 안에 있음
+        } else {
+          alert(data.message || "게시글을 불러오는 데 실패했습니다.");
+        }
+      } catch (error) {
+        console.error("Error fetching post:", error);
+        alert("게시글을 불러오는 데 오류가 발생했습니다.");
+      }
+    };
+
+    fetchPost();
+  }, [discussionId]); // discussionId가 변경될 때마다 다시 호출
+
+  // 로딩 중일 때 처리
+  if (!post) {
+    return <div>로딩 중...</div>; // 게시글이 없으면 로딩 중 표시
+  }
 
   // 찬성 버튼 클릭 핸들러
   const handleAgree = () => {
@@ -55,10 +79,8 @@ const Discussion = ({ discussions }) => {
   return (
     <div className="container">
       <div className="background">
-        {/* 기존 게시글 제목 */}
-        <h1 className="title">{post.postTitle}</h1>
+        <h1 className="title">{post.title}</h1>
         <hr />
-        {/* 게시글 정보 */}
         <div className="book-info">
           <div
             className="info-row"
@@ -86,26 +108,16 @@ const Discussion = ({ discussions }) => {
           </div>
         </div>
 
-        {/* 찬성/반대 버튼 */}
         <div className="vote-section">
-          <button
-            className="vote-button"
-            onClick={handleAgree}
-            disabled={hasVoted} // 이미 투표한 경우 비활성화
-          >
+          <button onClick={handleAgree} disabled={hasVoted}>
             찬성 ({agreeCount})
           </button>
-          <span className="vs-text">VS</span>
-          <button
-            className="vote-button"
-            onClick={handleDisagree}
-            disabled={hasVoted} // 이미 투표한 경우 비활성화
-          >
+          <span>VS</span>
+          <button onClick={handleDisagree} disabled={hasVoted}>
             반대 ({disagreeCount})
           </button>
         </div>
 
-        {/* 댓글 작성 */}
         <div className="comments-section">
           <h3>댓글</h3>
           {isCommenting ? (
@@ -114,43 +126,24 @@ const Discussion = ({ discussions }) => {
                 placeholder="댓글을 입력하세요"
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
-                className="textarea-field"
               />
-              <button type="submit" className="action-button1">
-                등록
-              </button>
+              <button type="submit">등록</button>
             </form>
           ) : (
-            <button
-              className="action-button2"
-              onClick={() => setIsCommenting(true)}
-            >
-              댓글 쓰기
-            </button>
+            <button onClick={() => setIsCommenting(true)}>댓글 쓰기</button>
           )}
 
-          {/* 댓글 리스트 */}
-          <ul className="comments-list">
+          <ul>
             {comments.map((comment, index) => (
-              <li key={index} className="comment-item">
-                <div className="comment-header">
-                  <strong>{comment.userId}</strong> -{" "}
-                  {new Date(comment.timestamp).toLocaleString()}
-                </div>
-                <p style={{ whiteSpace: "pre-wrap" }}>{comment.content}</p>
-                <hr />
+              <li key={index}>
+                <div>{comment.userId} - {new Date(comment.timestamp).toLocaleString()}</div>
+                <p>{comment.content}</p>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* 뒤로가기 버튼 추가 */}
-        <button
-          onClick={() => navigate("/discussion")}
-          className="back-button"
-        >
-          뒤로가기
-        </button>
+        <button onClick={() => navigate("/discussion")}>뒤로가기</button>
       </div>
     </div>
   );
