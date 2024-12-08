@@ -37,9 +37,11 @@ const Login = () => {
 
         // 사용자 ID 저장 (토큰 대신)
         const id = data.result?.id; // 서버 응답 구조에 따라 userId 경로 수정
-        if (id) {
-          localStorage.setItem("id", id); // 사용자 ID를 localStorage에 저장
-          alert("로그인 성공! 환영합니다.");
+        const userId = data.result?.userId;
+        if (id && userId) {
+          localStorage.setItem("id", id); // 고유 ID를 localStorage에 저장
+          localStorage.setItem("userId", userId); // 표시할 사용자 ID 저장
+          alert(`로그인 성공! ${userId}님, 환영합니다.`);
           window.location.href = "/"; // 로그인 성공 후 페이지 이동
         } else {
           alert("로그인에 성공했지만 사용자 ID가 없습니다.");

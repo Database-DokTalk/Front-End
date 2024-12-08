@@ -1,20 +1,37 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom"; // React Router의 NavLink 컴포넌트
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Header.css";
 
-const Header = ({ userName }) => {
-  const navigate = useNavigate(); // 페이지 이동을 위한 훅
+const Header = () => {
+  const navigate = useNavigate();
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    // localStorage에서 userId 확인
+    const storedUserId = localStorage.getItem("userId");
+    if (storedUserId) {
+      setUserId(storedUserId); // 로그인된 사용자 이름 설정
+    }
+  }, []);
 
   const goToLogin = () => {
-    navigate("/login"); // '로그인' 경로로 이동
+    navigate("/login");
   };
 
   const goToSignup = () => {
-    navigate("/signup"); // '회원가입' 경로로 이동
+    navigate("/signup");
   };
 
   const goToHome = () => {
-    navigate(""); // '홈' 경로로 이동
+    navigate("/");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("id"); // 사용자 ID 삭제
+    localStorage.removeItem("userId"); // 표시용 사용자 ID 삭제
+    setUserId(null); // 상태 초기화
+    alert("로그아웃 되었습니다.");
+    navigate("/"); // 홈으로 이동
   };
 
   return (
@@ -25,15 +42,19 @@ const Header = ({ userName }) => {
       </div>
       
       <div className="header-right">
-        {/* 로그인 여부 표시 */}
         <div className="header-user-info">
-          {userName ? (
-            <span>{userName} 님</span>
+          {userId ? (
+            <div className="userinfo-space">
+              <span>{userId} 님</span>
+              <button className="logout-button" onClick={handleLogout}>
+                로그아웃
+              </button>
+            </div>
           ) : (
             <div className="auth-button">
-              <button type="submit" className="login-button" onClick={goToLogin}>로그인</button>
+              <button className="login-button" onClick={goToLogin}>로그인</button>
               <div>|</div>
-              <button type="submit" className="signup-button" onClick={goToSignup}>회원가입</button>
+              <button className="signup-button" onClick={goToSignup}>회원가입</button>
             </div>
           )}
         </div>
