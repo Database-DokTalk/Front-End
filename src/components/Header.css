@@ -54,6 +54,23 @@
   font-weight: 400; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
 }
 
+.userinfo-space {
+  margin-bottom: 10px;
+}
+
+.logout-button {
+  padding: 5px;
+  margin-left: 10px;
+  background-color: #7D493C;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: "medium"; /* font-face에서 등록한 Pretendard 사용 */
+  font-weight: 400; /* PRETENDARD-SEMIBOLD로 매핑된 font-weight */
+}
+
 .nav a {
   margin: 0 10px;
   text-decoration: none;
