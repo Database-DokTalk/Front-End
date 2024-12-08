@@ -106,12 +106,8 @@ const SignUp = () => {
 
                         <button type="submit" className="signup-btn">
                             회원가입 하기
-                            회원가입 하기
                         </button>
                         <p>
-                            <a href="/login" className="return-to-login">
-                                로그인 페이지로 돌아가기
-                            </a>
                             <a href="/login" className="return-to-login">
                                 로그인 페이지로 돌아가기
                             </a>
