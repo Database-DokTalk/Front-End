@@ -34,8 +34,16 @@ const Login = () => {
       // 응답 상태에 따라 처리
       if (response.status === 200) {
         const data = await response.json();
-        alert("로그인 성공! 환영합니다."); // 서버 응답에 따라 수정
-        window.location.href = "/"; // 로그인 성공 후 페이지 이동
+
+        // 사용자 ID 저장 (토큰 대신)
+        const id = data.result?.id; // 서버 응답 구조에 따라 userId 경로 수정
+        if (id) {
+          localStorage.setItem("id", id); // 사용자 ID를 localStorage에 저장
+          alert("로그인 성공! 환영합니다.");
+          window.location.href = "/"; // 로그인 성공 후 페이지 이동
+        } else {
+          alert("로그인에 성공했지만 사용자 ID가 없습니다.");
+        }
       } else if (response.status === 401) {
         alert("로그인 실패: 아이디 또는 비밀번호를 확인해주세요.");
       } else {
