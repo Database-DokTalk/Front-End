@@ -19,14 +19,11 @@ const Discussion = () => {
     const fetchPost = async () => {
       try {
         const response = await fetch(`http://13.124.74.53:8080/api/discussions/${discussionId}`);
-        
         if (!response.ok) {
           throw new Error("게시글을 불러오는 데 실패했습니다.");
         }
 
         const data = await response.json();
-        
-        // 'result' 객체 내 데이터를 setPost로 업데이트
         if (data.isSuccess) {
           setPost(data.result); // 게시글 데이터는 result 안에 있음
         } else {
@@ -38,43 +35,91 @@ const Discussion = () => {
       }
     };
 
+    const fetchComments = async () => {
+      try {
+        const response = await fetch(`http://13.124.74.53:8080/discussion/${discussionId}`);
+        const data = await response.json();
+        if (!response.ok || !data.isSuccess) {
+          console.error("댓글 조회 실패:", data.message);
+          setComments([]); // 댓글 데이터를 빈 배열로 설정
+          return;
+        }
+        setComments(data.result || []); // 댓글 데이터를 상태에 설정
+      } catch (error) {
+        console.error("Error fetching comments:", error);
+        setComments([]); // 에러 발생 시 댓글을 빈 배열로 설정
+      }
+    };
+
     fetchPost();
+    fetchComments(); // 댓글도 함께 불러오기
   }, [discussionId]); // discussionId가 변경될 때마다 다시 호출
+
+  // 댓글 작성 핸들러
+  const handleCommentSubmit = async (e) => {
+    e.preventDefault();
+    if (!newComment.trim()) return; // 빈 입력 방지
+
+    const userId = localStorage.getItem("id");
+    if (!userId) {
+      alert("로그인 후 댓글을 작성할 수 있습니다.");
+      return;
+    }
+
+    const newCommentData = {
+      review: newComment.trim(),
+      userId: userId,
+      discussionId: discussionId,
+    };
+
+    try {
+      const response = await fetch("http://13.124.74.53:8080/discussion", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newCommentData),
+      });
+
+      if (!response.ok) {
+        throw new Error("댓글 작성에 실패했습니다.");
+      }
+
+      const data = await response.json();
+      if (data.isSuccess) {
+        const createdComment = data.result; // 서버에서 반환한 새 댓글 데이터
+        setComments((prevComments) => [...prevComments, createdComment]); // 상태에 새 댓글 추가
+        setNewComment(""); // 입력 필드 초기화
+        setIsCommenting(false); // 댓글 입력란 숨기기
+      } else {
+        alert(data.message || "댓글 작성에 실패했습니다.");
+      }
+    } catch (error) {
+      console.error("Error submitting comment:", error);
+      alert("댓글 작성에 실패했습니다.");
+    }
+  };
+
+  // 찬성 클릭 핸들러
+  const handleAgree = () => {
+    if (!hasVoted) {
+      setAgreeCount(agreeCount + 1); // 찬성 카운트 증가
+      setHasVoted(true); // 투표 완료 처리
+    }
+  };
+
+  // 반대 클릭 핸들러
+  const handleDisagree = () => {
+    if (!hasVoted) {
+      setDisagreeCount(disagreeCount + 1); // 반대 카운트 증가
+      setHasVoted(true); // 투표 완료 처리
+    }
+  };
 
   // 로딩 중일 때 처리
   if (!post) {
     return <div>로딩 중...</div>; // 게시글이 없으면 로딩 중 표시
   }
-
-  // 찬성 버튼 클릭 핸들러
-  const handleAgree = () => {
-    if (hasVoted) return; // 이미 투표한 경우
-    setAgreeCount((prev) => prev + 1); // 찬성 카운트 증가
-    setHasVoted(true); // 투표 상태 설정
-  };
-
-  // 반대 버튼 클릭 핸들러
-  const handleDisagree = () => {
-    if (hasVoted) return; // 이미 투표한 경우
-    setDisagreeCount((prev) => prev + 1); // 반대 카운트 증가
-    setHasVoted(true); // 투표 상태 설정
-  };
-
-  // 댓글 작성 핸들러
-  const handleCommentSubmit = (e) => {
-    e.preventDefault();
-    if (!newComment.trim()) return; // 빈 입력 방지
-
-    const newCommentData = {
-      userId: "user123", // 예제 사용자 아이디
-      content: newComment.trim(),
-      timestamp: new Date().toISOString(),
-    };
-
-    setComments((prevComments) => [...prevComments, newCommentData]); // 새 댓글 추가
-    setNewComment(""); // 입력 필드 초기화
-    setIsCommenting(false); // 댓글 입력란 숨기기
-  };
 
   return (
     <div className="container">
@@ -134,12 +179,18 @@ const Discussion = () => {
           )}
 
           <ul>
-            {comments.map((comment, index) => (
-              <li key={index}>
-                <div>{comment.userId} - {new Date(comment.timestamp).toLocaleString()}</div>
-                <p>{comment.content}</p>
-              </li>
-            ))}
+            {comments.length > 0 ? (
+              comments.map((comment) => (
+                <li key={comment.id}>
+                  <div>
+                    <strong>{comment.userName}</strong>
+                  </div>
+                  <p>{comment.review}</p>
+                </li>
+              ))
+            ) : (
+              <p>댓글이 없습니다.</p>
+            )}
           </ul>
         </div>
 
