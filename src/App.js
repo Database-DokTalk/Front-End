@@ -2,8 +2,7 @@
 import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header"; // 상단바 컴포넌트
-import Banner from "./components/Banner"; // 배너 컴포넌트
-import MainText from "./components/MainText"; // 메인텍스트 컴포넌트
+import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/Login/SignUp";
 import RecordList from "./pages/RecordBook/RecordList";
@@ -35,11 +34,8 @@ function App() {
       {/* 헤더 컴포넌트 */}
       <Header />
       <main>
-        {/* 배너와 메인 텍스트 */}
-        <Banner />
-        <MainText />
-
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} /> {/* 로그인 페이지 */}
           <Route path="/signup" element={<SignUp />} />
           <Route path="/record" element={<RecordList records={records} />} />
