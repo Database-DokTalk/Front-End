@@ -15,6 +15,7 @@ const MyPage = () => {
         // 로그인하지 않은 경우 로그인 페이지로 리디렉션
         if (!userId) {
             setError("로그인이 필요합니다.");
+            alert("로그인이 필요합니다.");
             setLoading(false);
             navigate("/login");
             return;
@@ -70,7 +71,6 @@ const MyPage = () => {
                         {/* userInfo에서 이름과 아이디, 전화번호를 표시 */}
                         <p className="username">{userInfo?.name}</p>
                         <p className="userid">{userInfo?.userId}</p>
-                        <p className="phone">{userInfo?.phoneNumber}</p> {/* 전화번호 추가 */}
                     </div>
                 </div>
                 <div className="mypage-right">
