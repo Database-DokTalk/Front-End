@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header"; // 상단바 컴포넌트
+import Banner from "./components/Banner"; // 배너 컴포넌트
+import MainText from "./components/MainText"; // 메인텍스트 컴포넌트
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/Login/SignUp";
 import RecordList from "./pages/RecordBook/RecordList";
@@ -30,8 +32,13 @@ function App() {
 
   return (
     <div>
+      {/* 헤더 컴포넌트 */}
       <Header />
       <main>
+        {/* 배너와 메인 텍스트 */}
+        <Banner />
+        <MainText />
+
         <Routes>
           <Route path="/login" element={<Login />} /> {/* 로그인 페이지 */}
           <Route path="/signup" element={<SignUp />} />
