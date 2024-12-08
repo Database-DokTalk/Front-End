@@ -25,28 +25,31 @@ const BookSearchModal = ({ onClose, onSelectBook }) => {
           className="search-input"
         />
         {/* 필터링된 책 리스트 */}
-        <table>
-          <thead>
-            <tr>
-              <th>선택</th>
-              <th>책 제목</th>
-              <th>저자</th>
-              <th>출판사</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredBooks.map((book) => (
-              <tr key={book.id}>
-                <td className="modal-center">
-                  <button onClick={() => onSelectBook(book)} className="selectBtn">✔️</button>
-                </td>
-                <td>{book.title}</td>
-                <td>{book.author}</td>
-                <td>{book.publisher}</td>
+        <div className="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>선택</th>
+                <th>책 제목</th>
+                <th>저자</th>
+                <th>출판사</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filteredBooks.map((book) => (
+                <tr key={book.id}>
+                  <td className="modal-center">
+                    <button onClick={() => onSelectBook(book)} className="selectBtn">✔️</button>
+                  </td>
+                  <td>{book.title}</td>
+                  <td>{book.author}</td>
+                  <td>{book.publisher}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        
         {/* 책이 없을 때 */}
         {filteredBooks.length === 0 && <p>검색 결과가 없습니다.</p>}
         <button className="close-button" onClick={onClose}>닫기</button>
