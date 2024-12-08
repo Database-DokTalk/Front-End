@@ -33,7 +33,7 @@ function App() {
       <Header />
       <main>
         <Routes>
-          {/* <Route path="/" element={<Navigate to="/" />} /> */}
+          { <Route path="/" element={<Navigate to="/" />} /> }
           <Route path="/login" element={<Login />} /> {/* 로그인 페이지 */}
           <Route path="/signup" element={<SignUp />} />
           <Route path="/record" element={<RecordList records={records} />} />
