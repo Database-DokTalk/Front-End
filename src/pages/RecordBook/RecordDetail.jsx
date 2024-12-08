@@ -1,23 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./RecordDetail.css";
 
 const RecordDetail = () => {
-  const { id } = useParams(); // URL에서 ID 가져오기
+  const { id: diaryId } = useParams(); // URL에서 diaryId 가져오기
   const [record, setRecord] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // 페이지 이동을 위한 훅
 
   useEffect(() => {
     const fetchRecord = async () => {
       try {
-        // localStorage에서 사용자 ID 가져오기
-        const userId = localStorage.getItem("userId");
-        if (!userId) {
-          throw new Error("로그인되지 않았습니다. 사용자 ID가 없습니다.");
-        }
-
-        const response = await fetch(`http://13.124.74.53:8080/diary/${id}`, {
+        const response = await fetch(`http://13.124.74.53:8080/api/diaries/${diaryId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -26,19 +21,46 @@ const RecordDetail = () => {
 
         if (response.status === 200) {
           const data = await response.json();
-          setRecord(data.result); // API의 result 객체를 상태에 저장
+          setRecord(data.result); // API 응답 데이터 저장
         } else {
-          throw new Error("데이터를 불러오는 데 실패했습니다.");
+          const errorText = await response.text();
+          throw new Error(`데이터 가져오기 실패: ${errorText}`);
         }
-      } catch (error) {
-        setError(error.message);
+      } catch (err) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
     fetchRecord();
-  }, [id]);
+  }, [diaryId]);
+
+  const handleDelete = async () => {
+    if (!window.confirm("정말로 이 게시글을 삭제하시겠습니까?")) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://13.124.74.53:8080/api/diaries/${diaryId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.status === 200) {
+        alert("게시글이 성공적으로 삭제되었습니다.");
+        navigate("/record"); // RecordList 페이지로 이동
+      } else {
+        const errorText = await response.text();
+        throw new Error(`삭제 실패: ${errorText}`);
+      }
+    } catch (err) {
+      console.error("Error deleting record:", err.message);
+      alert("삭제 중 문제가 발생했습니다. 다시 시도해주세요.");
+    }
+  };
 
   if (loading) {
     return <p>로딩 중...</p>;
@@ -59,7 +81,7 @@ const RecordDetail = () => {
           <img
             className="cover"
             alt="This is book cover."
-            src={record.bookCoverUrl || "/no-cover.jpg"} // API에서 책 커버 URL 가져오기
+            src={record.bookCoverUrl || "/no-cover.jpg"} // 책 커버 URL 가져오기
           />
           <div className="bookinfo">
             <p className="bookname">{record.bookTitle}</p>
@@ -72,16 +94,17 @@ const RecordDetail = () => {
           <p className="title">{record.title}</p>
           <hr />
           <div className="writeinfo">
-            <p className="writer">{record.writer || "작성자"}</p>
-            <p className="date">작성 날짜: {new Date(record.date).toLocaleDateString()}</p>
+            <p className="writer">작성자: {localStorage.getItem("userId")}</p>
+            {/* <p className="date">작성 날짜: {new Date(`${record.createdAt}T00:00:00`).toLocaleDateString()}</p> */}
           </div>
           <hr />
           <p className="textarea-field">{record.content}</p>
           <hr />
           <div className="actions">
-            <button type="submit" className="action-button">삭제</button>
+            <button type="button" className="action-button" onClick={handleDelete}>
+              삭제
+            </button>
           </div>
-          <p>좋아요: {record.likeCount}</p>
         </div>
       </main>
     </div>

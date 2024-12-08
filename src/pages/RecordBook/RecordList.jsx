@@ -31,8 +31,7 @@ const RecordList = () => {
         } else if (response.status === 204) {
           // 204 No Content 처리
           setRecords([]); // 기록이 없을 경우 빈 배열 설정
-        }
-        else {
+        } else {
           const errorText = await response.text();
           throw new Error(`API 오류: ${errorText}`);
         }
@@ -78,16 +77,6 @@ const RecordList = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {records.map((record, index) => (
-              <tr key={record.id}>
-                <td className="num">{index + 1}</td>
-                <td className="record-title">
-                  <Link to={`/record/${record.id}`}>{record.title}</Link>
-                </td>
-                <td>{record.bookTitle}</td>
-                <td>{new Date(record.createdAt).toLocaleDateString()}</td>
-              </tr>
-            ))} */}
             {records.length === 0 ? (
               // 기록이 없을 때 표시할 내용
               <tr>
@@ -98,10 +87,11 @@ const RecordList = () => {
             ) : (
               // 기록이 있을 때 테이블 렌더링
               records.map((record, index) => (
-                <tr key={record.id}>
+                <tr key={record.diaryId}>
                   <td className="num">{index + 1}</td>
                   <td className="record-title">
-                    <Link to={`/record/${record.id}`}>{record.title}</Link>
+                    {/* 글 제목 클릭 시 RecordDetail 페이지로 이동 */}
+                    <Link to={`/record/${record.diaryId}`}>{record.title}</Link>
                   </td>
                   <td>{record.bookTitle}</td>
                   <td>{new Date(record.createdAt).toLocaleDateString()}</td>
