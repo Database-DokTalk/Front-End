@@ -8,6 +8,7 @@ const RecordWrite = () => {
   const [bookTitle, setBookTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [publisher, setPublisher] = useState("");
+  const [bookCoverUrl, setBookCoverUrl] = useState("/no-cover.jpg"); // 기본 이미지 URL
   const [postTitle, setPostTitle] = useState("");
   const [content, setContent] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,6 +18,7 @@ const RecordWrite = () => {
     setBookTitle(book.title);
     setAuthor(book.author);
     setPublisher(book.publisher);
+    setBookCoverUrl(book.bookCoverUrl); // 이미지 URL 설정
     setIsModalOpen(false);
   };
 
@@ -46,8 +48,8 @@ const RecordWrite = () => {
           bookTitle,
           author,
           publisher,
+          bookCoverUrl, // bookCoverUrl 추가
           content,
-          
         }),
       });
 
@@ -80,7 +82,7 @@ const RecordWrite = () => {
       <main>
         <div className="left">
           <div className="bookcover">
-            <img className="writecover" alt="This is book cover." src="/no-cover.jpg" />
+            <img className="writecover" alt="This is book cover." src={bookCoverUrl} />
           </div>
           <div className="bookinfo">
             <p className="bookname">{bookTitle || "책 제목: 선택 안됨"}</p>

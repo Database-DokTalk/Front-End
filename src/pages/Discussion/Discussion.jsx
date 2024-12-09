@@ -154,11 +154,11 @@ const Discussion = () => {
         </div>
 
         <div className="vote-section">
-          <button onClick={handleAgree} disabled={hasVoted}>
+          <button onClick={handleAgree} disabled={hasVoted} className="vote-button">
             찬성 ({agreeCount})
           </button>
           <span>VS</span>
-          <button onClick={handleDisagree} disabled={hasVoted}>
+          <button onClick={handleDisagree} disabled={hasVoted} className="vote-button">
             반대 ({disagreeCount})
           </button>
         </div>
@@ -170,12 +170,13 @@ const Discussion = () => {
               <textarea
                 placeholder="댓글을 입력하세요"
                 value={newComment}
+                className="textarea-field"
                 onChange={(e) => setNewComment(e.target.value)}
               />
-              <button type="submit">등록</button>
+              <button className="action-button1" type="submit">등록</button>
             </form>
           ) : (
-            <button onClick={() => setIsCommenting(true)}>댓글 쓰기</button>
+            <button className="action-button2" onClick={() => setIsCommenting(true)}>댓글 쓰기</button>
           )}
 
           <ul>
@@ -194,7 +195,7 @@ const Discussion = () => {
           </ul>
         </div>
 
-        <button onClick={() => navigate("/discussion")}>뒤로가기</button>
+        <button className="back-button" onClick={() => navigate("/discussion")}>뒤로가기</button>
       </div>
     </div>
   );

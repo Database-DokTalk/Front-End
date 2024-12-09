@@ -78,6 +78,11 @@
   cursor: pointer;
 }
 
+/* .vote-button.active {
+  background-color: #7D493C; 클릭 시 변경될 색상
+  color: #fff; 텍스트 색상 유지
+} */
+
 .action-button2 {
   padding: 15px;
   background-color: #CFB7A3;

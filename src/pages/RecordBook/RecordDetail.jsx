@@ -81,7 +81,7 @@ const RecordDetail = () => {
           <img
             className="cover"
             alt="This is book cover."
-            src={record.bookCoverUrl || "/no-cover.jpg"} // 책 커버 URL 가져오기
+            src={record.bookCoverUrl || "/no-cover.jpg"} // API 응답에서 가져온 bookCoverUrl 사용
           />
           <div className="bookinfo">
             <p className="bookname">{record.bookTitle}</p>
@@ -95,7 +95,6 @@ const RecordDetail = () => {
           <hr />
           <div className="writeinfo">
             <p className="writer">작성자: {localStorage.getItem("userId")}</p>
-            {/* <p className="date">작성 날짜: {new Date(`${record.createdAt}T00:00:00`).toLocaleDateString()}</p> */}
           </div>
           <hr />
           <p className="textarea-field">{record.content}</p>
